@@ -70,27 +70,14 @@ int vacationdp( vector<vector<int>> arr, int n)
     dp[0][1] = arr[0][1];
     dp[0][2] = arr[0][2];
 
-    int prev = -1;
-    int comp = -1;
-    // finding the greatest selection of all the places in first row
-    if ( dp[0][2] > dp[0][1])
+    for (int k = 1; k  < arr.size() ; k++)
     {
-        comp = dp[0][2];
-        prev = 2;
-    }   
-    else
-    {
-        comp = dp[0][1];
-        prev = 1;
+        /* code */
+        dp[k][0] = arr[k][0] + max( dp[k - 1][1], dp[k - 1][2]); 
+        dp[k][1] = arr[k][1] + max( dp[k - 1][0], dp[k - 1][2]); 
+        dp[k][2] = arr[k][2] + max( dp[k - 1][0], dp[k - 1][1]) ;
     }
-    if( max(comp, dp[0][0]) == dp[0][0])
-    {
-        prev = 0;
-    }
-    comp = max( comp, dp[0][0]);
-    
-
-
+    return *max_element( dp[n -1].begin(), dp[n - 1].end());
 
 }
 
@@ -110,11 +97,11 @@ int main()
     if( n > 1)
     {
 
-        vacation_recur( arr, 1,0, 0,arr[0][0]);
-        vacation_recur( arr, 1,1, 1,arr[0][1]);
-        vacation_recur( arr, 1,2, 2,arr[0][2]);
+        // vacation_recur( arr, 1,0, 0,arr[0][0]);
+        // vacation_recur( arr, 1,1, 1,arr[0][1]);
+        // vacation_recur( arr, 1,2, 2,arr[0][2]);
 
-        cout << max_h << endl;  
+        cout << vacationdp(arr, n) << endl;  
     }
     else
     {
