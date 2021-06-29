@@ -7,7 +7,7 @@ void dfs( vector<vector<int>> &grid, vector<vector<bool>> &visi, int i, int j, i
     if( grid[i][j] == 1 and !visi[i][j] and i >= 0 and j >= 0 and i < grid.size() and j < grid[0].size())
     {
         // mark place as visited
-        
+        visi[i][j] = true;
               
         // four directions allowed
         int marea += 1;
