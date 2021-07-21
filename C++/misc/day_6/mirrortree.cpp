@@ -5,7 +5,8 @@ using namespace std;
 /*
     -program description
 
-    - 
+    - check for mirror tree 
+    - if yes then change the right subtree as a mirror of left by changing node values
 */
 
 struct Node
